@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+
 public class Human extends Player{
 
     public Human(String name) {
@@ -8,7 +10,7 @@ public class Human extends Player{
     }
 
     @Override
-    public int[] play() {
+    public int[] play(ArrayList<ArrayList<Integer>> reg) {
         int fingers = 0;
         int sum = 0;
         int trySuccess = 0;

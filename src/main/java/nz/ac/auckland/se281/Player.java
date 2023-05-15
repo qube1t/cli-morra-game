@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+
 public abstract class Player {
     private String name;
     private int score;
@@ -21,5 +23,5 @@ public abstract class Player {
         this.score++;
     }
 
-    public abstract int[] play();
+    public abstract int[] play(ArrayList<ArrayList<Integer>> reg);
 }
