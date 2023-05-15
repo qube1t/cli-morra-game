@@ -1,28 +1,40 @@
 package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
+import java.util.ArrayList;
 
 public class Morra {
 
   private int round;
   private AI ai;
   private Human human;
+  private ArrayList<ArrayList<Integer>> registry;
 
   public Morra() {
     round = -1;
+    registry = new ArrayList<ArrayList<Integer>>();
   }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
     System.out.println("Welcome " + options[0] + "!");
     human = new Human(options[0]);
     ai = AIModesFactory.getAIMode(difficulty);
+
+    registry.add(new ArrayList<Integer>());
+    registry.add(new ArrayList<Integer>());
+
     round = 0;
   }
 
   private int[] conductPlayerTurn(Player player) {
-    int[] play = player.play();
+    int[] play = player.play(registry);
     int fingers = play[0];
     int sum = play[1];
+
+
+    // 0 is player; 1 is ai
+    int index = player instanceof Human ? 0 : 1;
+    registry.get(index).add(fingers);
     MessageCli.PRINT_INFO_HAND.printMessage(player.getName(), Integer.toString(fingers), Integer.toString(sum));
 
     return play;

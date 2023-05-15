@@ -2,6 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.aiModes.easyAI;
+import nz.ac.auckland.se281.aiModes.mediumAI;
 
 public class AIModesFactory {
     public static AI getAIMode(Difficulty mode){
@@ -9,8 +10,8 @@ public class AIModesFactory {
         switch (mode) {
             case EASY:
                 return new easyAI(nameAI);
-            // case "medium":
-            //     return new mediumAI();
+            case MEDIUM:
+                return new mediumAI(nameAI);
             // case "hard":
             //     return new hardAI();
             // case "master":
