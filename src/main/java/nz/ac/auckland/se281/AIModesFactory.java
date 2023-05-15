@@ -8,7 +8,7 @@ public class AIModesFactory {
         String nameAI = "Jarvis";
         switch (mode) {
             case EASY:
-                return new easyAI();
+                return new easyAI(nameAI);
             // case "medium":
             //     return new mediumAI();
             // case "hard":
