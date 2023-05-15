@@ -1,16 +1,18 @@
 package nz.ac.auckland.se281.aiModes;
 
 import nz.ac.auckland.se281.AI;
-import nz.ac.auckland.se281.Utils;
+import nz.ac.auckland.se281.strategies.RandomStrategy;
 
-public class easyAI implements AI{
+public class easyAI extends AI{
+
+    public easyAI(String name) {
+        super(name);
+        this.setStrategy();
+    }
 
     @Override
-    public int[] play() {
-        int fingers = Utils.getRandomNumber(1, 5);
-        int sum = Utils.getRandomNumber(fingers + 1, 10);
-
-        return new int[]{fingers, sum};
+    protected void setStrategy() {
+        this.strategy = new RandomStrategy();
     }
     
 }
