@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import nz.ac.auckland.se281.AI;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 
-public class easyAI extends AI{
+public class EasyAI extends AI{
 
-    public easyAI(String name) {
+    public EasyAI(String name) {
         super(name);
     }
 
