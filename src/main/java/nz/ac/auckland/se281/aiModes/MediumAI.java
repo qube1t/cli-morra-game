@@ -6,9 +6,9 @@ import nz.ac.auckland.se281.AI;
 import nz.ac.auckland.se281.strategies.AverageStrategy;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 
-public class mediumAI extends AI{
+public class MediumAI extends AI{
 
-    public mediumAI(String name) {
+    public MediumAI(String name) {
         super(name);
     }
 
