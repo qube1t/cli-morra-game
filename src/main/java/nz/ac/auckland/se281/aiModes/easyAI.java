@@ -13,7 +13,8 @@ public class easyAI extends AI{
 
     @Override
     protected void checkStrategy(ArrayList<ArrayList<Integer>> reg) {
-        this.strategy = new RandomStrategy();
+        if (this.count == 1)
+            this.strategy = new RandomStrategy();
     }
     
 }
