@@ -2,17 +2,18 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Morra {
 
   private int round;
   private AI ai;
   private Human human;
-  private ArrayList<ArrayList<Integer>> registry;
+  private ArrayList<ArrayList<Integer>> history;
 
   public Morra() {
     round = -1;
-    registry = new ArrayList<ArrayList<Integer>>();
+    history = new ArrayList<ArrayList<Integer>>();
   }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
@@ -20,21 +21,17 @@ public class Morra {
     human = new Human(options[0]);
     ai = AIModesFactory.getAIMode(difficulty);
 
-    registry.add(new ArrayList<Integer>());
-    registry.add(new ArrayList<Integer>());
+    history.add(new ArrayList<Integer>());
+    history.add(new ArrayList<Integer>());
 
     round = 0;
   }
 
   private int[] conductPlayerRound(Player player) {
-    int[] play = player.play(registry);
+    int[] play = player.play(history);
     int fingers = play[0];
     int sum = play[1];
 
-
-    // 0 is player; 1 is ai
-    int index = player instanceof Human ? 0 : 1;
-    registry.get(index).add(fingers);
     MessageCli.PRINT_INFO_HAND.printMessage(player.getName(), Integer.toString(fingers), Integer.toString(sum));
 
     return play;
@@ -63,7 +60,7 @@ public class Morra {
     int[] fingers = {humanFingers, aiFingers};
 
     for (int i= 0; i<=1; i++){
-      registry.get(i).add(fingers[i]);
+      history.get(i).add(fingers[i]);
     }
   }
 
