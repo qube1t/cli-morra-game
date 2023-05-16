@@ -5,13 +5,14 @@ import java.util.ArrayList;
 
 public class Morra {
 
-  private int round;
+  private int roundState;
   private AI ai;
   private Human human;
   private ArrayList<ArrayList<Integer>> history;
+  private int pointsToWin;
 
   public Morra() {
-    round = -1;
+    roundState = -1;
     history = new ArrayList<ArrayList<Integer>>();
   }
 
@@ -19,11 +20,12 @@ public class Morra {
     System.out.println("Welcome " + options[0] + "!");
     human = new Human(options[0]);
     ai = AIModesFactory.getAIMode(difficulty);
+    this.pointsToWin = pointsToWin;
 
     history.add(new ArrayList<Integer>());
     history.add(new ArrayList<Integer>());
 
-    round = 0;
+    roundState = 0;
   }
 
   private int[] conductPlayerRound(Player player) {
@@ -42,10 +44,10 @@ public class Morra {
     int aiFingers = aiResult[0];
     int aiSum = aiResult[1];
 
-    if (humanFingers + aiFingers == humanSum) {
+    if (humanFingers + aiFingers == humanSum && humanSum != aiSum) {
       human.addScore();
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
-    } else if (humanFingers + aiFingers == aiSum) {
+    } else if (humanFingers + aiFingers == aiSum && humanSum != aiSum) {
       ai.addScore();
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
     } else {
@@ -64,13 +66,13 @@ public class Morra {
   }
 
   public void play() {
-    if (round == -1) {
+    if (roundState == -1) {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
     // while (round <)
-    this.round++;
-    MessageCli.START_ROUND.printMessage(Integer.toString(round));
+    this.roundState++;
+    MessageCli.START_ROUND.printMessage(Integer.toString(roundState));
     MessageCli.ASK_INPUT.printMessage();
 
     int[] humanResult = this.conductPlayerRound(human);
@@ -79,8 +81,26 @@ public class Morra {
     
     getRoundResult(humanResult, aiResult);
     setRegistry(humanResult, aiResult);
+    checkGameResult();
 
   }
 
-  public void showStats() {}
+  private void checkGameResult() {
+    if (human.getScore() == pointsToWin) {
+      MessageCli.END_GAME.printMessage(human.getName(), Integer.toString(roundState));
+      roundState = -1;
+    } else if (ai.getScore() == pointsToWin) {
+      MessageCli.END_GAME.printMessage(ai.getName(), Integer.toString(roundState));
+      roundState = -1;
+    }
+  }
+
+  public void showStats() {
+    if (roundState == -1) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+    MessageCli.PRINT_PLAYER_WINS.printMessage(human.getName(), Integer.toString(human.getScore()), Integer.toString(pointsToWin- human.getScore()));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(ai.getName(), Integer.toString(ai.getScore()), Integer.toString(pointsToWin- ai.getScore()));
+  }
 }
