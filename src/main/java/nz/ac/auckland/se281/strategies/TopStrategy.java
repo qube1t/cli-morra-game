@@ -13,7 +13,7 @@ public class TopStrategy implements Strategy{
     }
 
     private int getMode() {
-        int mode = humanHistory.get(Utils.getRandomNumber(0, humanHistory.size()));
+        int mode = humanHistory.get(0);
         int maxCount = 0;
         for (int i = 0; i < humanHistory.size(); i++) {
             int value = humanHistory.get(i);
@@ -21,10 +21,10 @@ public class TopStrategy implements Strategy{
             for (int j = 0; j < humanHistory.size(); j++) {
                 if (humanHistory.get(j) == value)
                     count++;
-                if (count > maxCount) {
-                    mode = value;
-                    maxCount = count;
                 }
+            if (count > maxCount) {
+                mode = value;
+                maxCount = count;
             }
         }
         return mode;
