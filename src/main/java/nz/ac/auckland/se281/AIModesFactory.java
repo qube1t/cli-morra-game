@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.aiModes.EasyAI;
 import nz.ac.auckland.se281.aiModes.HardAI;
+import nz.ac.auckland.se281.aiModes.MasterAI;
 import nz.ac.auckland.se281.aiModes.MediumAI;
 
 public class AIModesFactory {
@@ -15,8 +16,8 @@ public class AIModesFactory {
                 return new MediumAI(nameAI);
             case HARD:
                 return new HardAI(nameAI);
-            // case "master":
-            //     return new masterAI();
+            case MASTER:
+                return new MasterAI(nameAI);
             default:
                 return null;
         }
