@@ -8,16 +8,17 @@ import nz.ac.auckland.se281.strategies.TopStrategy;
 
 public class HardAI extends AI{
 
-    public HardAI(String name) {
+    public HardAI(String name, ArrayList<ArrayList<Integer>> history) {
         super(name);
+        this.humanHistory = history.get(0);
     }
 
     @Override
-    protected void checkStrategy(ArrayList<ArrayList<Integer>> reg) {
+    protected void checkStrategy() {
         if (this.count == 1) {
             this.strategy = new RandomStrategy();
         } else if (this.count == 4){
-            ArrayList<Integer> humanInputs = reg.get(0);
+            ArrayList<Integer> humanInputs = humanHistory;
             this.strategy = new TopStrategy(humanInputs);
         }
     }

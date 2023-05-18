@@ -8,19 +8,17 @@ import nz.ac.auckland.se281.strategies.RandomStrategy;
 
 public class MediumAI extends AI{
 
-    public MediumAI(String name) {
+    public MediumAI(String name, ArrayList<ArrayList<Integer>> history) {
         super(name);
+        this.humanHistory = history.get(0);
     }
 
-
-
     @Override
-    protected void checkStrategy(ArrayList<ArrayList<Integer>> reg) {
+    protected void checkStrategy() {
         if (this.count == 1) {
             this.strategy = new RandomStrategy();
         } else if (this.count == 4){
-            ArrayList<Integer> humanInputs = reg.get(0);
-            this.strategy = new AverageStrategy(humanInputs);
+            this.strategy = new AverageStrategy(humanHistory);
         }
     }
     

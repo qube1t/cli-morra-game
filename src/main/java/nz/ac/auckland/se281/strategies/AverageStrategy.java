@@ -12,16 +12,19 @@ public class AverageStrategy implements Strategy {
         this.humanHistory = reg;
     }
 
-    private double getAverage(){
+    private int getAverage(){
         int sum = 0;
         for (int i = 0; i < humanHistory.size(); i++) {
             sum += humanHistory.get(i);
         }
-        return Math.round(sum / humanHistory.size());
+
+        // return the average with rounding
+        return Math.round((float)sum / humanHistory.size());
     }
 
     @Override
     public int[] engage() {
+        // get a random number of fingers and get sum with average
         int fingers = Utils.getRandomNumber(1, 5);
         int sum = fingers + (int) getAverage();
 

@@ -12,23 +12,28 @@ public class Morra {
   private int pointsToWin;
 
   public Morra() {
+    // no game has started yet
     roundState = -1;
     history = new ArrayList<ArrayList<Integer>>();
   }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
     System.out.println("Welcome " + options[0] + "!");
+
+    // initialize history
+    history.add(new ArrayList<Integer>());
+    history.add(new ArrayList<Integer>());
+
+    // initialize game with new human and ai with selected difficulty
     human = new Human(options[0]);
-    ai = AIModesFactory.getAIMode(difficulty);
+    ai = AIModesFactory.getAIMode(difficulty, history);
     this.pointsToWin = pointsToWin;
-
-    history.add(new ArrayList<Integer>());
-    history.add(new ArrayList<Integer>());
-
+    
     roundState = 0;
   }
 
   private int[] conductPlayerRound(Player player) {
+    // allow player to play and get player's play
     int[] play = player.play(history);
     int fingers = play[0];
     int sum = play[1];
@@ -39,18 +44,23 @@ public class Morra {
   }
 
   private void getRoundResult(int[] humanResult, int[] aiResult) {
+    // seperate the results into fingers and sum
     int humanFingers = humanResult[0];
     int humanSum = humanResult[1];
     int aiFingers = aiResult[0];
     int aiSum = aiResult[1];
 
+    // print out the results
     if (humanFingers + aiFingers == humanSum && humanSum != aiSum) {
+      // human wins
       human.addScore();
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
     } else if (humanFingers + aiFingers == aiSum && humanSum != aiSum) {
+      // ai wins
       ai.addScore();
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
     } else {
+      // draw
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
     }
   }

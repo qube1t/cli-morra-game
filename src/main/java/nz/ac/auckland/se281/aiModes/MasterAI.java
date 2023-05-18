@@ -12,22 +12,22 @@ public class MasterAI extends AI{
 
     private Strategy[] alternatingStrategies = new Strategy[2];
 
-    public MasterAI(String name) {
+    public MasterAI(String name, ArrayList<ArrayList<Integer>> history) {
         super(name);
-        //TODO Auto-generated constructor stub
+        this.humanHistory = history.get(0);
     }
 
     @Override
-    protected void checkStrategy(ArrayList<ArrayList<Integer>> reg) {
+    protected void checkStrategy() {
         if (this.count == 1) {
             this.strategy = new RandomStrategy();
         } else if (this.count == 4){
-            ArrayList<Integer> humanInputs = reg.get(0);
-            this.strategy = new AverageStrategy(humanInputs);
+
+            this.strategy = new AverageStrategy(humanHistory);
             this.alternatingStrategies[0] = this.strategy;
         } else if (this.count == 5){
-            ArrayList<Integer> humanInputs = reg.get(0);
-            this.strategy = new TopStrategy(humanInputs);
+
+            this.strategy = new TopStrategy(humanHistory);
             this.alternatingStrategies[1] = this.strategy;
         } else if (this.count > 5){
             this.strategy = this.alternatingStrategies[this.count % 2];
