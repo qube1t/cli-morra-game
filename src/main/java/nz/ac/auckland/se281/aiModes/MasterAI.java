@@ -19,18 +19,22 @@ public class MasterAI extends AI{
 
     @Override
     protected void checkStrategy() {
-        if (this.count == 1) {
+        if (this.round == 1) {
+            // set random strategy at first round
             this.strategy = new RandomStrategy();
-        } else if (this.count == 4){
-
+        } else if (this.round == 4){
+            // set average strategy at fourth round
             this.strategy = new AverageStrategy(humanHistory);
+            // add this strategy to the alternating strategies to be used later
             this.alternatingStrategies[0] = this.strategy;
-        } else if (this.count == 5){
-
+        } else if (this.round == 5){
+            // set top strategy at fifth round
             this.strategy = new TopStrategy(humanHistory);
+            // add this strategy to the alternating strategies to be used later
             this.alternatingStrategies[1] = this.strategy;
-        } else if (this.count > 5){
-            this.strategy = this.alternatingStrategies[this.count % 2];
+        } else if (this.round > 5){
+            // set alternating strategies from sixth round
+            this.strategy = this.alternatingStrategies[this.round % 2];
         }
     }
     

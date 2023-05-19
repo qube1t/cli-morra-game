@@ -34,7 +34,7 @@ public class Morra {
 
   private int[] conductPlayerRound(Player player) {
     // allow player to play and get player's play
-    int[] play = player.play(history);
+    int[] play = player.play();
     int fingers = play[0];
     int sum = play[1];
 
@@ -77,18 +77,20 @@ public class Morra {
 
   public void play() {
     if (roundState == -1) {
+      // game has not been started
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
-    // while (round <)
+
     this.roundState++;
     MessageCli.START_ROUND.printMessage(Integer.toString(roundState));
     MessageCli.ASK_INPUT.printMessage();
 
+    // conduct a round for each player and get their inputs
     int[] humanResult = this.conductPlayerRound(human);
-    
     int[] aiResult = this.conductPlayerRound(ai);
     
+    // get, set and check the result of the round
     getRoundResult(humanResult, aiResult);
     setRegistry(humanResult, aiResult);
     checkGameResult();
@@ -97,9 +99,11 @@ public class Morra {
 
   private void checkGameResult() {
     if (human.getScore() == pointsToWin) {
+      // human wins; game over
       MessageCli.END_GAME.printMessage(human.getName(), Integer.toString(roundState));
       roundState = -1;
     } else if (ai.getScore() == pointsToWin) {
+      // ai wins; game over
       MessageCli.END_GAME.printMessage(ai.getName(), Integer.toString(roundState));
       roundState = -1;
     }
@@ -107,6 +111,7 @@ public class Morra {
 
   public void showStats() {
     if (roundState == -1) {
+      // game has not been started
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }

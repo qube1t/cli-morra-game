@@ -11,6 +11,8 @@ import nz.ac.auckland.se281.aiModes.MediumAI;
 public class AIModesFactory {
     public static AI getAIMode(Difficulty mode, ArrayList<ArrayList<Integer>> humanHistory){
         String nameAI = "Jarvis";
+
+        // return different AI mode according to the difficulty
         switch (mode) {
             case EASY:
                 return new EasyAI(nameAI);

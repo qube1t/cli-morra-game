@@ -1,14 +1,14 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
-
 public abstract class Player {
     private String name;
     private int score;
+    protected int round;
 
     public Player(String name) {
         this.name = name;
         this.score = 0;
+        this.round = 0;
     }
 
     public String getName() {
@@ -23,5 +23,5 @@ public abstract class Player {
         this.score++;
     }
 
-    public abstract int[] play(ArrayList<ArrayList<Integer>> reg);
+    public abstract int[] play();
 }

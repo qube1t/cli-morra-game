@@ -7,6 +7,7 @@ public class RandomStrategy implements Strategy{
 
     @Override
     public int[] engage() {
+        // produce random number of fingers and sum
         int fingers = Utils.getRandomNumber(1, 5);
         int sum = Utils.getRandomNumber(fingers + 1, fingers + 5);
 

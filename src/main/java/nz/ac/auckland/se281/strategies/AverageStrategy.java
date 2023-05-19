@@ -13,6 +13,7 @@ public class AverageStrategy implements Strategy {
     }
 
     private int getAverage(){
+        // calculate the average of inputs by human
         int sum = 0;
         for (int i = 0; i < humanHistory.size(); i++) {
             sum += humanHistory.get(i);

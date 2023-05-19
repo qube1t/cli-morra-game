@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281.aiModes;
 
-import java.util.ArrayList;
-
 import nz.ac.auckland.se281.AI;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 
@@ -13,7 +11,8 @@ public class EasyAI extends AI{
 
     @Override
     protected void checkStrategy() {
-        if (this.count == 1)
+        if (this.round == 1)
+            // strategy set to random strategy at first round
             this.strategy = new RandomStrategy();
     }
     

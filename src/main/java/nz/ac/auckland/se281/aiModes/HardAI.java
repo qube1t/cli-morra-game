@@ -15,9 +15,9 @@ public class HardAI extends AI{
 
     @Override
     protected void checkStrategy() {
-        if (this.count == 1) {
+        if (this.round == 1) {
             this.strategy = new RandomStrategy();
-        } else if (this.count == 4){
+        } else if (this.round == 4){
             ArrayList<Integer> humanInputs = humanHistory;
             this.strategy = new TopStrategy(humanInputs);
         }

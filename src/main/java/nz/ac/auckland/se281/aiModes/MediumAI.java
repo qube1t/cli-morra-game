@@ -15,9 +15,11 @@ public class MediumAI extends AI{
 
     @Override
     protected void checkStrategy() {
-        if (this.count == 1) {
+        if (this.round == 1) {
+            // set random strategy at first round 
             this.strategy = new RandomStrategy();
-        } else if (this.count == 4){
+        } else if (this.round == 4){
+            // set average strategy at fourth round
             this.strategy = new AverageStrategy(humanHistory);
         }
     }

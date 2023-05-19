@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public abstract class AI extends Player{
     public Strategy strategy;
-    protected int count;
     protected ArrayList<Integer> humanHistory;
 
     public AI(String name) {
@@ -14,8 +13,9 @@ public abstract class AI extends Player{
     protected abstract void checkStrategy();
 
     @Override
-    public int[] play(ArrayList<ArrayList<Integer>> reg) {
-        count++;
+    public int[] play() {
+        // round increased for checkStrategy
+        round++;
         checkStrategy();
         return this.strategy.engage();
     }
