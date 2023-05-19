@@ -26,7 +26,7 @@ public class Morra {
 
     // initialize game with new human and ai with selected difficulty
     human = new Human(options[0]);
-    ai = AIModesFactory.getAIMode(difficulty, history);
+    ai = AIModesFactory.getAIMode("Jarvis", difficulty, history);
     this.pointsToWin = pointsToWin;
     
     roundState = 0;
