@@ -2,17 +2,17 @@ package nz.ac.auckland.se281.aiModes;
 
 import java.util.ArrayList;
 
-import nz.ac.auckland.se281.AI;
+import nz.ac.auckland.se281.Ai;
 import nz.ac.auckland.se281.Strategy;
 import nz.ac.auckland.se281.strategies.AverageStrategy;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 import nz.ac.auckland.se281.strategies.TopStrategy;
 
-public class MasterAI extends AI {
+public class MasterAi extends Ai {
 
   private Strategy[] alternatingStrategies = new Strategy[2];
 
-  public MasterAI(String name, ArrayList<ArrayList<Integer>> history) {
+  public MasterAi(String name, ArrayList<ArrayList<Integer>> history) {
     super(name);
     this.humanHistory = history.get(0);
   }

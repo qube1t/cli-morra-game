@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Morra {
 
   private int roundState;
-  private AI ai;
+  private Ai ai;
   private Human human;
   private ArrayList<ArrayList<Integer>> history;
   private int pointsToWin;
@@ -26,9 +26,9 @@ public class Morra {
 
     // initialize game with new human and ai with selected difficulty
     human = new Human(options[0]);
-    ai = AIModesFactory.getAIMode("Jarvis", difficulty, history);
+    ai = AiModesFactory.getAiMode("Jarvis", difficulty, history);
     this.pointsToWin = pointsToWin;
-    
+
     roundState = 0;
   }
 
@@ -68,9 +68,9 @@ public class Morra {
   private void setRegistry(int[] humanResult, int[] aiResult) {
     int humanFingers = humanResult[0];
     int aiFingers = aiResult[0];
-    int[] fingers = {humanFingers, aiFingers};
+    int[] fingers = { humanFingers, aiFingers };
 
-    for (int i= 0; i<=1; i++){
+    for (int i = 0; i <= 1; i++) {
       history.get(i).add(fingers[i]);
     }
   }
@@ -89,7 +89,7 @@ public class Morra {
     // conduct a round for each player and get their inputs
     int[] humanResult = this.conductPlayerRound(human);
     int[] aiResult = this.conductPlayerRound(ai);
-    
+
     // get, set and check the result of the round
     getRoundResult(humanResult, aiResult);
     setRegistry(humanResult, aiResult);
@@ -115,7 +115,9 @@ public class Morra {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
-    MessageCli.PRINT_PLAYER_WINS.printMessage(human.getName(), Integer.toString(human.getScore()), Integer.toString(pointsToWin- human.getScore()));
-    MessageCli.PRINT_PLAYER_WINS.printMessage(ai.getName(), Integer.toString(ai.getScore()), Integer.toString(pointsToWin- ai.getScore()));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(human.getName(), Integer.toString(human.getScore()),
+        Integer.toString(pointsToWin - human.getScore()));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(ai.getName(), Integer.toString(ai.getScore()),
+        Integer.toString(pointsToWin - ai.getScore()));
   }
 }

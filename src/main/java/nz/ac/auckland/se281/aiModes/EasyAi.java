@@ -1,11 +1,11 @@
 package nz.ac.auckland.se281.aiModes;
 
-import nz.ac.auckland.se281.AI;
+import nz.ac.auckland.se281.Ai;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 
-public class EasyAI extends AI {
+public class EasyAi extends Ai {
 
-  public EasyAI(String name) {
+  public EasyAi(String name) {
     super(name);
   }
 

@@ -2,13 +2,13 @@ package nz.ac.auckland.se281.aiModes;
 
 import java.util.ArrayList;
 
-import nz.ac.auckland.se281.AI;
+import nz.ac.auckland.se281.Ai;
 import nz.ac.auckland.se281.strategies.RandomStrategy;
 import nz.ac.auckland.se281.strategies.TopStrategy;
 
-public class HardAI extends AI {
+public class HardAi extends Ai {
 
-  public HardAI(String name, ArrayList<ArrayList<Integer>> history) {
+  public HardAi(String name, ArrayList<ArrayList<Integer>> history) {
     super(name);
     this.humanHistory = history.get(0);
   }

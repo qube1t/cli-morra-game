@@ -2,11 +2,11 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public abstract class AI extends Player {
+public abstract class Ai extends Player {
   public Strategy strategy;
   protected ArrayList<Integer> humanHistory;
 
-  public AI(String name) {
+  public Ai(String name) {
     super(name);
   }
 
