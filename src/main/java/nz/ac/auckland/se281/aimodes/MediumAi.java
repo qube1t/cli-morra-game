@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281.aiModes;
+package nz.ac.auckland.se281.aimodes;
 
 import java.util.ArrayList;
 

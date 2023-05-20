@@ -3,10 +3,10 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 import nz.ac.auckland.se281.Main.Difficulty;
-import nz.ac.auckland.se281.aiModes.EasyAi;
-import nz.ac.auckland.se281.aiModes.HardAi;
-import nz.ac.auckland.se281.aiModes.MasterAi;
-import nz.ac.auckland.se281.aiModes.MediumAi;
+import nz.ac.auckland.se281.aimodes.EasyAi;
+import nz.ac.auckland.se281.aimodes.HardAi;
+import nz.ac.auckland.se281.aimodes.MasterAi;
+import nz.ac.auckland.se281.aimodes.MediumAi;
 
 public class AiModesFactory {
   public static Ai getAiMode(String nameAI, Difficulty mode, ArrayList<ArrayList<Integer>> humanHistory) {
