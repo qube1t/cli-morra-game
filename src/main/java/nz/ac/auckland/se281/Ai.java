@@ -20,7 +20,11 @@ public abstract class Ai extends Player {
   public int[] play() {
     // round increased for checkStrategy
     round++;
+
+    // check if strategy needs to be changed
     checkStrategy();
+
+    // return the fingers and sum from the strategy
     return this.strategy.engage();
   }
 
