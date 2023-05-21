@@ -14,10 +14,10 @@ public class Morra {
   public Morra() {
     // no game has started yet
     roundState = -1;
-    history = new ArrayList<ArrayList<Integer>>();
   }
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
+    this.history = new ArrayList<ArrayList<Integer>>();
     System.out.println("Welcome " + options[0] + "!");
 
     // initialize history
