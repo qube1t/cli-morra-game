@@ -16,10 +16,10 @@ public class HardAi extends Ai {
   @Override
   protected void checkStrategy() {
     if (this.round == 1) {
-      this.strategy = new RandomStrategy();
+      setStrategy(new RandomStrategy());
     } else if (this.round == 4) {
       ArrayList<Integer> humanInputs = humanHistory;
-      this.strategy = new TopStrategy(humanInputs);
+      setStrategy(new TopStrategy(humanInputs));
     }
   }
 

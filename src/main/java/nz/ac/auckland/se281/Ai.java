@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public abstract class Ai extends Player {
-  public Strategy strategy;
+  protected Strategy strategy;
   protected ArrayList<Integer> humanHistory;
 
   public Ai(String name) {
@@ -11,6 +11,10 @@ public abstract class Ai extends Player {
   }
 
   protected abstract void checkStrategy();
+
+  public void setStrategy(Strategy strategy) {
+    this.strategy = strategy;
+  }
 
   @Override
   public int[] play() {

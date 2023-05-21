@@ -13,7 +13,7 @@ public class EasyAi extends Ai {
   protected void checkStrategy() {
     if (this.round == 1)
       // strategy set to random strategy at first round
-      this.strategy = new RandomStrategy();
+      setStrategy(new RandomStrategy());
   }
 
 }

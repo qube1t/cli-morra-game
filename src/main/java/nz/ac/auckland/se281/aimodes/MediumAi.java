@@ -17,10 +17,10 @@ public class MediumAi extends Ai {
   protected void checkStrategy() {
     if (this.round == 1) {
       // set random strategy at first round
-      this.strategy = new RandomStrategy();
+      setStrategy(new RandomStrategy());
     } else if (this.round == 4) {
       // set average strategy at fourth round
-      this.strategy = new AverageStrategy(humanHistory);
+      setStrategy(new AverageStrategy(humanHistory));
     }
   }
 
