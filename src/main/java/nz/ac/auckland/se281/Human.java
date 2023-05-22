@@ -19,6 +19,11 @@ public class Human extends Player {
       String input = Utils.scanner.nextLine();
       String[] inputArray = input.split(" ");
 
+      if (inputArray.length != 2) {
+        MessageCli.INVALID_INPUT.printMessage();
+        continue;
+      }
+
       try {
         // try to parse input into int
         fingers = Integer.parseInt(inputArray[0]);
