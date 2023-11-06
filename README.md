@@ -1,4 +1,4 @@
-# Assignment 1
+# Morra
 
-You will find instructions for this assignment on the course website.
+Play Morra with the computer on different difficulty levels from the command line.
 
